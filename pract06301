@@ -1,0 +1,13 @@
+import git
+
+# HTTPS GitHub URL of the repository
+repo_url = "https://github.com/username/repository.git"
+clone_dir = "cloned_repo"  # Directory where repo will be cloned
+
+try:
+    print("Cloning repository...")
+    git.Repo.clone_from(repo_url, clone_dir)
+    print("Repository cloned successfully!")
+except Exception as e:
+    print("Error cloning repository:", e)
+
