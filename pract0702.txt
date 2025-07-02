@@ -1,0 +1,21 @@
+import subprocess
+import os
+
+# Define the path where the key will be saved
+ssh_dir = os.path.expanduser("~/.ssh")
+key_path = os.path.join(ssh_dir, "id_rsa")
+
+# Create .ssh directory if it doesn't exist
+os.makedirs(ssh_dir, exist_ok=True)
+
+# Generate the SSH key
+subprocess.run(["ssh-keygen", "-t", "rsa", "-b", "4096", "-f", key_path, "-N", ""], check=True)
+
+# Read and print the public key
+pub_key_path = key_path + ".pub"
+with open(pub_key_path, "r") as pubkey_file:
+    public_key = pubkey_file.read()
+
+print("✅ SSH Public Key Generated Successfully:\n")
+print(public_key)
+
